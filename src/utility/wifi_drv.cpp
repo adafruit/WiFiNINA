@@ -378,7 +378,6 @@ uint8_t* WiFiDrv::getMacAddress()
     return _mac;
 }
 
-#ifdef ARDUINO_ARCH_RP2040
 void WiFiDrv::getIpAddress(IPAddress& ip)
 {
 	getNetworkData(_localIp, _subnetMask, _gatewayIp);
@@ -396,26 +395,6 @@ void WiFiDrv::getIpAddress(IPAddress& ip)
 	getNetworkData(_localIp, _subnetMask, _gatewayIp);
 	ip = IPAddress(_gatewayIp);
  }
-#else
-void WiFiDrv::getIpAddress(IPAddress& ip)
-{
-    getNetworkData(_localIp, _subnetMask, _gatewayIp);
-    ip = _localIp;
-}
-
-void WiFiDrv::getSubnetMask(IPAddress& mask)
-{
-    getNetworkData(_localIp, _subnetMask, _gatewayIp);
-    mask = _subnetMask;
-}
-
-void WiFiDrv::getGatewayIP(IPAddress& ip)
-{
-    getNetworkData(_localIp, _subnetMask, _gatewayIp);
-    ip = _gatewayIp;
-}
-#endif
-
 
 const char* WiFiDrv::getCurrentSSID()
 {
