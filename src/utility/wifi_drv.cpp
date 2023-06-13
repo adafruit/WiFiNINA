@@ -381,19 +381,19 @@ uint8_t* WiFiDrv::getMacAddress()
 void WiFiDrv::getIpAddress(IPAddress& ip)
 {
 	getNetworkData(_localIp, _subnetMask, _gatewayIp);
-	ip = _localIp;
+	ip = IPAddress(_localIp);
 }
 
  void WiFiDrv::getSubnetMask(IPAddress& mask)
  {
 	getNetworkData(_localIp, _subnetMask, _gatewayIp);
-	mask = _subnetMask;
+	mask = IPAddress(_subnetMask);
  }
 
  void WiFiDrv::getGatewayIP(IPAddress& ip)
  {
 	getNetworkData(_localIp, _subnetMask, _gatewayIp);
-	ip = _gatewayIp;
+	ip = IPAddress(_gatewayIp);
  }
 
 const char* WiFiDrv::getCurrentSSID()
