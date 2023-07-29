@@ -36,6 +36,7 @@ extern "C" {
 
 // Array of data to cache the information related to the networks discovered
 char 	WiFiDrv::_networkSsid[][WL_SSID_MAX_LENGTH] = {{"1"},{"2"},{"3"},{"4"},{"5"}};
+char  WiFiDrv::nullTermSsid[WL_SSID_MAX_LENGTH + 1]{};
 
 // Cached values of retrieved data
 char 	WiFiDrv::_ssid[] = {0};
@@ -566,7 +567,7 @@ const char* WiFiDrv::getSSIDNetoworks(uint8_t networkItem)
 	if (networkItem >= WL_NETWORKS_LIST_MAXNUM)
 		return (char*)NULL;
 
-	return _networkSsid[networkItem];
+	return strncpy(nullTermSsid, _networkSsid[networkItem], WL_SSID_MAX_LENGTH);
 }
 
 uint8_t WiFiDrv::getEncTypeNetowrks(uint8_t networkItem)
