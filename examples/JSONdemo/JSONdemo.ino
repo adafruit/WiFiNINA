@@ -33,6 +33,12 @@ last revision November 2015
   #define ESP32_RESETN  12   // Reset pin
   #define SPIWIFI_ACK   11   // a.k.a BUSY or READY pin
   #define ESP32_GPIO0   -1
+#elif defined(ARDUINO_ADAFRUIT_ITSYBITSY_RP2040)
+  #define SPIWIFI SPI  // The SPI port
+  #define SPIWIFI_SS    11   // Chip select pin
+  #define ESP32_RESETN  10   // Reset pin
+  #define SPIWIFI_ACK   9   // a.k.a BUSY or READY pin
+  #define ESP32_GPIO0   -1
 #elif defined(ARDUINO_AVR_FEATHER328P)
   #define SPIWIFI       SPI  // The SPI port
   #define SPIWIFI_SS     4   // Chip select pin
