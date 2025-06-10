@@ -10,6 +10,7 @@
  */
 #include <SPI.h>
 #include <WiFiNINA.h>
+#include "pin_config.h" // Configure the pins used for the ESP32 connection
 
 void setup() {
   // Initialize serial
@@ -21,6 +22,9 @@ void setup() {
   // Print a welcome message
   Serial.println("WiFiNINA firmware check.");
   Serial.println();
+
+  // Set up the pins!
+  WiFi.setPins(SPIWIFI_SS, SPIWIFI_ACK, ESP32_RESETN, ESP32_GPIO0, &SPIWIFI);
 
   // check for the WiFi module:
   if (WiFi.status() == WL_NO_MODULE) {

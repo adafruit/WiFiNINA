@@ -22,7 +22,7 @@
  */
 #include <SPI.h>
 #include <WiFiNINA.h>
-
+#include "pin_config.h" // Configure the pins used for the ESP32 connection
 #include "arduino_secrets.h" 
 ///////please enter your sensitive data in the Secret tab/arduino_secrets.h
 char ssid[] = SECRET_SSID;        // your network SSID (name)
@@ -35,6 +35,9 @@ WiFiServer server(80);
 void setup() {
   Serial.begin(9600);      // initialize serial communication
   pinMode(9, OUTPUT);      // set the LED pin mode
+
+  // Set up the pins!
+  WiFi.setPins(SPIWIFI_SS, SPIWIFI_ACK, ESP32_RESETN, ESP32_GPIO0, &SPIWIFI);
 
   // check for the WiFi module:
   if (WiFi.status() == WL_NO_MODULE) {
