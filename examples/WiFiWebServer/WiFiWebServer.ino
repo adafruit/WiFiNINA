@@ -18,17 +18,7 @@
 
 #include <SPI.h>
 #include <WiFiNINA.h>
-
-// if the wifi definition isnt in the board variant
-#if !defined(SPIWIFI_SS)
-  // Don't change the names of these #define's! they match the variant ones
-  #define SPIWIFI_SS       10
-  #define SPIWIFI_ACK       7
-  #define ESP32_RESETN      5
-  #define ESP32_GPIO0       6  // Helpful for servers
-  #define SPIWIFI          SPI
-#endif
-
+#include "pin_config.h" // Configure the pins used for the ESP32 connection
 
 #include "arduino_secrets.h" 
 ///////please enter your sensitive data in the Secret tab/arduino_secrets.h
@@ -47,6 +37,9 @@ void setup() {
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
   }
+
+  // Set up the pins!
+  WiFi.setPins(SPIWIFI_SS, SPIWIFI_ACK, ESP32_RESETN, ESP32_GPIO0, &SPIWIFI);
 
   // check for the WiFi module:
   WiFi.setPins(SPIWIFI_SS, SPIWIFI_ACK, ESP32_RESETN, ESP32_GPIO0, &SPIWIFI);
