@@ -106,7 +106,7 @@ void printEncryptionType(int thisType) {
     case ENC_TYPE_UNKNOWN:
     default:
       Serial.print("Unknown (");
-      Serial.print(WiFi.encryptionType(thisNet));
+      Serial.print(WiFi.encryptionType(thisType));
       Serial.println(")");
       break;
   }
