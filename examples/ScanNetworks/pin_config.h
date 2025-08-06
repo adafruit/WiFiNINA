@@ -15,7 +15,7 @@
   #define SPIWIFI_ACK   11   // a.k.a BUSY or READY pin
   #define ESP32_GPIO0   -1
 #elif defined(ARDUINO_ADAFRUIT_FRUITJAM_RP2350)
-  #define SPIWIFI       SPI  // The SPI port
+  #define SPIWIFI       SPI1  // The SPI port
   #define SPIWIFI_SS    46   // Chip select pin
   #define ESP32_RESETN  22   // Reset pin
   #define SPIWIFI_ACK    3   // a.k.a BUSY or READY pin
